@@ -8,12 +8,17 @@ public class Employee {
     private String employeeNumber;
     private String firstName;
     private String lasName;
+    private Gender gender;
+    private Race race;
 
      private Employee(){}
 
      private Employee(Builder builder){
+         this.employeeNumber = builder.employeeNumber;
          this.firstName = builder.firstName;
          this.lasName = builder.lastName;
+         this.gender = builder.gender;
+         this.race = builder.race;
      }
 
 
@@ -24,11 +29,19 @@ public class Employee {
      public String getLasName() {
             return lasName;
         }
+    public Gender getGender() {
+        return gender;
+    }
+    public Race getRace() {
+        return race;
+    }
 
-        public static class Builder{
+    public static class Builder{
          private String employeeNumber;
          private String firstName;
          private String lastName;
+         private Gender gender;
+         private Race race;
 
          public  Builder employeeNumber(String employeeNumber){
              this.employeeNumber = employeeNumber;
@@ -44,6 +57,16 @@ public class Employee {
              this.lastName = lastName;
              return this;
          }
+
+            public Builder gender(Gender gender){
+                this.gender = gender;
+                return this;
+            }
+
+            public Builder race(Race race){
+                this.race = race;
+                return this;
+            }
 
          public Employee build(){
              return new Employee(this);
